@@ -1,34 +1,39 @@
 export const setNumberValidator = (value, minValue, maxValue) => {
-    const valueTest = new RegExp("^\d+$");
+    const valueTest = new RegExp("^\\d+$");
     const trimmedValue = value.trim();
-    let minValue;
-    let maxValue;
-
+    // if value is empty
     if (trimmedValue==='') {
         return{
             isValid: false,
             error: `ERROR! Can Not Be An Empty Value!`
         }
     }
+    // if value is not an Integer
     if (!valueTest.test(trimmedValue)) {
         return{
             isValid: false,
             error:`ERROR! ONly Integer Value Accepted`
         }
     }
-    if (trimmedValue<=0) {
+    // Convert string to number for comparison
+    const numValue = Number(trimmedValue);
+
+    // if value is less than minimum number
+    if (numValue<minValue) {
         return{
             isValid: false,
             error: `Invalid Number`
         }
     }
-    if (trimmedValue>maxValue) {
+    // if value is bigger than maximum number
+    if (numValue>maxValue) {
         return{
             isValid: false,
             error: `Input Value Must Be ${minValue} to ${maxValue}`
         }
     }
-    if (!isNaN(trimmedValue)) {
+    // if value is not a number 
+    if (isNaN(trimmedValue)) {
         return{
             isValid: false,
             error: `ERROR OCCURRED : Must Have To Be A Number`

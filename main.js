@@ -22,9 +22,9 @@ document.querySelector('#app').innerHTML = `
     <div class="container-xxl container-xl container-lg container-md container-sm py-4">
       <main class="mx-auto">
         <div class="main-content w-100 h-auto">
-          <form action="#" class="form form-group w-75 mx-auto border border-2 border-transparent rounded-4 gradient-bg-second shadow-lg">
+          <form id="input-form" action="#" class="form form-group w-75 mx-auto border border-2 border-transparent rounded-4 gradient-bg-second shadow-lg">
               <h2 class="text-center text-capitalize fw-semibold text-white-50">input your hidden number!</h2>
-              <small class="text-center d-flex justify-content-around text-capitalize text-info fw-medium fst-italic">set a number between 1 to 10</small>
+              <small id="input-info" class="text-center d-flex justify-content-around text-capitalize text-info fw-medium fst-italic">set a number between 1 to 10</small>
               <div class="w-75 pt-1  mx-auto mt-3 d-flex flex-wrap align-items-center justify-content-around position-relative">
                 <div class="w-75 position-relative my-2">
                   <input type="text" placeholder="set your number" class="form-control w-100 center-placeholder gradient-bg-light shadow-sm">
@@ -45,9 +45,9 @@ document.querySelector('#app').innerHTML = `
       <div class="container-xxl container-xl container-lg container-md container-sm py-4">
         <main class="mx-auto">
           <div class="main-content w-100 h-auto">
-            <form action="#" class="form form-group w-75 mx-auto border border-2 border-transparent rounded-4 gradient-bg-second shadow-lg">
+            <form id="guess-form" action="#" class="form form-group w-75 mx-auto border border-2 border-transparent rounded-4 gradient-bg-second shadow-lg">
                 <h2 class="text-center text-capitalize fw-semibold text-white-50">guess the number!</h2>
-                <small class="text-center d-flex justify-content-around text-capitalize text-info fw-medium fst-italic">guess a number between 1 to 10</small>
+                <small id="guess-info" class="text-center d-flex justify-content-around text-capitalize text-info fw-medium fst-italic">guess a number between 1 to 10</small>
                 <div class="w-75 pt-1 mx-auto mt-3 d-flex flex-wrap align-items-center justify-content-around position-relative">
                   <div class="w-75 position-relative my-2">
                     <input id="number-guess-inputfield" type="text" placeholder="set your number" class="form-control w-100 center-placeholder gradient-bg-light shadow-sm">
@@ -76,6 +76,6 @@ document.querySelector('#app').innerHTML = `
      </footer>
 
   </div>
-  
+
 `
 
