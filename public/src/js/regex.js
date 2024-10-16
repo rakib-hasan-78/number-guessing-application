@@ -18,6 +18,13 @@ export const setNumberValidator = (value, minValue, maxValue) => {
     // Convert string to number for comparison
     const numValue = Number(trimmedValue);
 
+    if (!Number.parseInt(trimmedValue)) {
+        return {
+            isValid : false,
+            error: `Error ! Floating Number Not Accepted!`
+        }
+    }
+
     // if value is less than minimum number
     if (numValue<minValue) {
         return{

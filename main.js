@@ -3,6 +3,8 @@ import { Tooltip as Tooltip, Toast as Toast, Popover as Popover } from 'bootstra
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import './public/src/style/index.css';
+import { insertInputFunction } from './public/src/js/inputHandler';
+
 
 
 
@@ -24,17 +26,17 @@ document.querySelector('#app').innerHTML = `
         <div class="main-content w-100 h-auto">
           <form id="input-form" action="#" class="form form-group w-75 mx-auto border border-2 border-transparent rounded-4 gradient-bg-second shadow-lg">
               <h2 class="text-center text-capitalize fw-semibold text-white-50">input your hidden number!</h2>
-              <small id="input-info" class="text-center d-flex justify-content-around text-capitalize text-info fw-medium fst-italic">set a number between 1 to 10</small>
+              <small id="input-info" class="text-center d-flex justify-content-around text-capitalize text-info fw-medium fst-italic"></small>
               <div class="w-75 pt-1  mx-auto mt-3 d-flex flex-wrap align-items-center justify-content-around position-relative">
                 <div class="w-75 position-relative my-2">
-                  <input type="text" placeholder="set your number" class="form-control w-100 center-placeholder gradient-bg-light shadow-sm">
-                  <span id="icon-cancel" class="position-absolute bottom-0 end-0 p-2 d-none">
+                  <input id="input-field-value" type="text" placeholder="set your number" class="form-control w-100 center-placeholder gradient-bg-light shadow-sm">
+                  <span id="icon-cancel" class="position-absolute bottom-0 end-0 p-2  d-none">
                     <i class="bi bi-x-octagon-fill"></i>
                   </span>
                 </div>
                 <button type="button" class="btn btn-secondary shadow-sm gradient-bg-button">Set number</button>
               </div>
-              <div class="w-75 d-flex align-items-center justify-content-start px-3 mx-auto fw-medium text-capitalize"><small>ohhh hoo done !!!!</small></div>
+              <div class="w-75 d-flex align-items-center justify-content-start px-3 mx-auto fw-medium text-capitalize text-danger"><small class="error-msg"></small></div>
           </form>
         </div>
       </main>
@@ -78,4 +80,11 @@ document.querySelector('#app').innerHTML = `
   </div>
 
 `
+
+
+
+
+
+insertInputFunction();
+
 
