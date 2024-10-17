@@ -85,5 +85,15 @@ const minimumValue = 1;
 const maximumValue = 10;
 let hiddenValue=null;
 
+
 insertInputFunction(minimumValue, maximumValue);
-setHiddenNumber(minimumValue, maximumValue, hiddenValue);
+
+// Pass the callback to setHiddenNumber
+const handleHiddenValueUpdate = (updatedValue) => {
+  hiddenValue = updatedValue;
+  console.log('Updated hiddenValue:', hiddenValue);
+};
+setHiddenNumber(minimumValue, maximumValue, handleHiddenValueUpdate);
+
+hiddenValue = handleHiddenValueUpdate;
+

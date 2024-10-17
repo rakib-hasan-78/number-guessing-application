@@ -1,6 +1,6 @@
 import { setNumberValidator } from "./regex";
 
-export const setHiddenNumber = (minimumValue, maximumValue, hiddenValue) => {
+export const setHiddenNumber = (minimumValue, maximumValue, cb) => {
     const form = document.getElementById('input-form');
     const inputField = document.getElementById('input-field-value');
     const errMsg = document.querySelector('.error-msg');
@@ -8,6 +8,7 @@ export const setHiddenNumber = (minimumValue, maximumValue, hiddenValue) => {
   
     form.addEventListener('submit', (e) => {
       e.preventDefault();
+      let hiddenValue=null;
       let allValid = true;
       let isValid = false;
       let error = null;
@@ -47,8 +48,11 @@ export const setHiddenNumber = (minimumValue, maximumValue, hiddenValue) => {
         cancelIcon.classList.remove('d-inline-flex');
         cancelIcon.classList.add('d-none');
         form.reset();
+
+        if (cb) {
+          cb(hiddenValue)
+        }
       }
-      console.log(hiddenValue);
     });
   
  }
