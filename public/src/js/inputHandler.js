@@ -1,15 +1,14 @@
 import { CustomError } from "./customError";
 import { setNumberValidator } from "./regex";
 
-export const insertInputFunction = () => {
+export const insertInputFunction = (minimumValue , maximumValue) => {
   
     const inputForm = document.getElementById('input-form');
     const inputInfo = document.getElementById('input-info');
     const inputFieldValue = document.getElementById('input-field-value');
     const cancelIcon = document.getElementById('icon-cancel');
     const errorMsg = document.querySelector('.error-msg');
-    const minimumValue = 1;
-    const maximumValue = 10;
+ 
     // bring inputInfo content ---->
     inputFieldValue.addEventListener('focus', (e)=>{
       if (!inputFieldValue.value) {
@@ -69,6 +68,9 @@ export const insertInputFunction = () => {
       inputFieldValue.value = '';
       cancelIcon.classList.remove('d-inline-flex');
       cancelIcon.classList.add('d-none');
+      inputFieldValue.classList.remove('is-valid', 'is-invalid');
+      errorMsg.textContent=``;
     });
     
   }
+

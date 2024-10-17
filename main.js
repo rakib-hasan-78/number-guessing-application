@@ -4,6 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import './public/src/style/index.css';
 import { insertInputFunction } from './public/src/js/inputHandler';
+import { setHiddenNumber } from './public/src/js/setHiddenNumber';
 
 
 
@@ -34,7 +35,7 @@ document.querySelector('#app').innerHTML = `
                     <i class="bi bi-x-octagon-fill"></i>
                   </span>
                 </div>
-                <button type="button" class="btn btn-secondary shadow-sm gradient-bg-button">Set number</button>
+                <button type="submit" class="btn btn-secondary shadow-sm gradient-bg-button">Set number</button>
               </div>
               <div class="w-75 d-flex align-items-center justify-content-start px-3 mx-auto fw-medium text-capitalize text-danger"><small class="error-msg"></small></div>
           </form>
@@ -80,11 +81,9 @@ document.querySelector('#app').innerHTML = `
   </div>
 
 `
+const minimumValue = 1;
+const maximumValue = 10;
+let hiddenValue=null;
 
-
-
-
-
-insertInputFunction();
-
-
+insertInputFunction(minimumValue, maximumValue);
+setHiddenNumber(minimumValue, maximumValue, hiddenValue);
