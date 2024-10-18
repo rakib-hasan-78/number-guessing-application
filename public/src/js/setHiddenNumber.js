@@ -1,6 +1,6 @@
 import { setNumberValidator } from "./regex";
 
-export const setHiddenNumber = (minimumValue, maximumValue, cb) => {
+export const setHiddenNumber = (minimumValue, maximumValue) => {
     const form = document.getElementById('input-form');
     const inputField = document.getElementById('input-field-value');
     const errMsg = document.querySelector('.error-msg');
@@ -48,10 +48,6 @@ export const setHiddenNumber = (minimumValue, maximumValue, cb) => {
         cancelIcon.classList.remove('d-inline-flex');
         cancelIcon.classList.add('d-none');
         form.reset();
-
-        if (cb) {
-          cb(hiddenValue)
-        }
       }
     });
   

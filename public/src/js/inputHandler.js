@@ -1,4 +1,5 @@
 import { CustomError } from "./customError";
+import { focusEventHandlers, formClickEventHandlers, isValidFunction, notValidFunction, xMarkClickEvent, xMarkFunction } from "./handlers";
 import { setNumberValidator } from "./regex";
 
 export const insertInputFunction = (minimumValue , maximumValue) => {
@@ -10,29 +11,15 @@ export const insertInputFunction = (minimumValue , maximumValue) => {
     const errorMsg = document.querySelector('.error-msg');
  
     // bring inputInfo content ---->
-    inputFieldValue.addEventListener('focus', (e)=>{
-      if (!inputFieldValue.value) {
-        inputInfo.innerText = `set a number between ${minimumValue} to ${maximumValue}`;
-      }
-    });
+    focusEventHandlers(inputFieldValue,inputInfo, minimumValue,maximumValue);
     // hide the value if there is click outside the inputField--->
-    inputForm.addEventListener('click', (e)=>{
-      if (document.activeElement!==inputFieldValue) {
-        if (!inputFieldValue.value) {
-          inputInfo.innerText = ``;
-        }
-      }
-    });
+    formClickEventHandlers(inputForm,inputFieldValue,inputInfo);
+
     // vising x mark & validation handling----->
     inputFieldValue.addEventListener('input', (e)=>{
       // x mark---->
-      if (!inputFieldValue.value.trim()) {
-        cancelIcon.classList.remove('d-inline-flex');
-        cancelIcon.classList.add('d-none');
-      } else {
-        cancelIcon.classList.remove('d-none');
-        cancelIcon.classList.add('d-inline-flex',);
-      }
+      xMarkFunction(inputFieldValue, cancelIcon);
+
       // validation ----->
       try {
         let presetMsg = `Set a number between ${minimumValue} to ${maximumValue}`;
@@ -42,35 +29,24 @@ export const insertInputFunction = (minimumValue , maximumValue) => {
         }
         const {isValid, error} = validator;
         if (isValid) {
-          inputFieldValue.classList.remove('is-invalid');
-          inputFieldValue.classList.add('is-valid');
-          errorMsg.textContent = ``;
-          inputInfo.textContent = `Fantastic!! value inserting done successfully!`
+          isValidFunction(inputFieldValue,errorMsg,inputInfo,`Fantastic!! value inserting done successfully!`)
         } else if (e.target.value.trim()==='') {
-          inputFieldValue.classList.remove('is-valid');
-          inputFieldValue.classList.add('is-invalid');
-          inputInfo.textContent = presetMsg;
+          // inValid context function ---->
+          notValidFunction(inputFieldValue, inputInfo, presetMsg);
           throw new CustomError(error);
   
         } else{
-          inputFieldValue.classList.remove('is-valid');
-          inputFieldValue.classList.add('is-invalid');
-          inputInfo.textContent = presetMsg;
+          // invalid context function  ---->
+          notValidFunction(inputFieldValue, inputInfo, presetMsg);
           throw new CustomError(error)
         }
   
       } catch (error) {
         errorMsg.textContent = error.message;
       }
-    });
-    // handling x mark
-    cancelIcon.addEventListener('click', ()=>{
-      inputFieldValue.value = '';
-      cancelIcon.classList.remove('d-inline-flex');
-      cancelIcon.classList.add('d-none');
-      inputFieldValue.classList.remove('is-valid', 'is-invalid');
-      errorMsg.textContent=``;
-    });
-    
-  }
+  });
+  // handling x mark
+  xMarkClickEvent(cancelIcon, inputFieldValue, errorMsg);
+
+}
 
