@@ -1,15 +1,10 @@
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
-// import { Tooltip as Tooltip, Toast as Toast, Popover as Popover } from 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import './public/src/style/index.css';
 import { insertInputFunction } from './public/src/js/inputHandler';
 import { setHiddenNumber } from './public/src/js/setHiddenNumber';
-import { focusEventHandlers, formClickEventHandlers, xMarkFunction } from './public/src/js/handlers';
-
-
-
-
+import { guessInputHandler } from './public/src/js/guessNumber';
 
 document.querySelector('#app').innerHTML = `
   <div>
@@ -62,7 +57,7 @@ document.querySelector('#app').innerHTML = `
                   </div>
                   <button id="btn-num-check" type="button" class="btn btn-secondary shadow-sm gradient-bg-button">check number</button>
                 </div>
-                <div class="w-75 d-flex align-items-center justify-content-start px-3 mx-auto fw-medium text-capitalize"><small>ohhh hoo done !!!!</small></div>
+                <div class="w-75 d-flex align-items-center justify-content-start px-3 mx-auto fw-medium text-capitalize text-danger valid-color"><small id="guess-validityMsg"> </small></div>
             </form>
           </div>
         </main>
@@ -85,50 +80,23 @@ document.querySelector('#app').innerHTML = `
 `
 const minimumValue = 1;
 const maximumValue = 10;
-let hiddenValue=null;
 
+// Insert Number Section input handler----->
 insertInputFunction(minimumValue, maximumValue);
+// save insert Number handler----->
 setHiddenNumber(minimumValue, maximumValue);
+// guess number input handler----->
+guessInputHandler(minimumValue, maximumValue)
 
 
-
-const winningValueHandler = () => {
+let hiddenValue=null;
   // handling hidden value here ---->
   const storedValues = JSON.parse(sessionStorage.getItem('store-value'));
   hiddenValue = storedValues ? storedValues[storedValues.length-1] : null;
   // attempts to play 
   let playingChances = 3;
 
-  const guessInfo = document.getElementById('guess-info');
-  const guessForm = document.getElementById('guess-form');
-  const numberMatchingField = document.getElementById('number-guess-input-field');
-  const numberGuessCancel = document.getElementById('number-guess-cancel');
-  const btn = document.getElementById('btn-num-check');
 
-  // input focus event handler
-  focusEventHandlers(numberMatchingField,guessInfo, minimumValue, maximumValue);
-  // form click focusEventHandlers
-
-  formClickEventHandlers(guessForm,numberMatchingField, guessInfo);
-
-  // input field validation handler
-  numberMatchingField.addEventListener('input', (e)=>{
-    // visualizing X mark ------->
-    xMarkFunction(numberMatchingField,numberGuessCancel);
-    // input field validation 
-       try {
-         const prestMsg = `Guess A Number From ${minimumValue} to ${maximumValue}`; 
-         
-       } catch (error) {
-        
-       }
-  });
-  
-}
-
-winningValueHandler()
-
-// name = guess-value
 
 
 
