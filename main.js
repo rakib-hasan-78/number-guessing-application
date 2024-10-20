@@ -2,12 +2,14 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import './public/src/style/index.css';
+
 import { insertInputFunction } from './public/src/js/inputHandler';
 import { setHiddenNumber } from './public/src/js/setHiddenNumber';
 import { guessInputHandler } from './public/src/js/guessNumber';
+import { numberChallenge } from './public/src/js/numberChallange';
 
 document.querySelector('#app').innerHTML = `
-  <div>
+  <div >
   <!-- header -->
   <header class="w-100 h-25">
     <div class="container-xxl container-xl container-lg container-md container-sm py-5">
@@ -41,7 +43,7 @@ document.querySelector('#app').innerHTML = `
    </section>
      <!-- guess number input section  -->
 
-     <section id="number-guess-input" class="number-guess-input mt-2">
+     <section id="number-guess-input" class="number-guess-input mt-2 d-none">
       <div class="container-xxl container-xl container-lg container-md container-sm py-4">
         <main class="mx-auto">
           <div class="main-content w-100 h-auto">
@@ -55,7 +57,7 @@ document.querySelector('#app').innerHTML = `
                       <i class="bi bi-x-octagon-fill"></i>
                     </span>
                   </div>
-                  <button id="btn-num-check" type="button" class="btn btn-secondary shadow-sm gradient-bg-button">check number</button>
+                  <button id="btn-num-check" type="submit" class="btn btn-secondary shadow-sm gradient-bg-button">check number</button>
                 </div>
                 <div class="w-75 d-flex align-items-center justify-content-start px-3 mx-auto fw-medium text-capitalize text-danger valid-color"><small id="guess-validityMsg"> </small></div>
             </form>
@@ -86,18 +88,6 @@ insertInputFunction(minimumValue, maximumValue);
 // save insert Number handler----->
 setHiddenNumber(minimumValue, maximumValue);
 // guess number input handler----->
-guessInputHandler(minimumValue, maximumValue)
-
-
-let hiddenValue=null;
-  // handling hidden value here ---->
-  const storedValues = JSON.parse(sessionStorage.getItem('store-value'));
-  hiddenValue = storedValues ? storedValues[storedValues.length-1] : null;
-  // attempts to play 
-  let playingChances = 3;
-
-
-
-
-
-
+guessInputHandler(minimumValue, maximumValue);
+// number matching challenge 
+numberChallenge(minimumValue, maximumValue);
