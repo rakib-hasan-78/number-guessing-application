@@ -70,8 +70,8 @@ document.querySelector('#app').innerHTML = `
       <div class="container-xxl container-xl container-lg container-md container-sm mt-2 border border-1 border-transparent rounded-4 gradient-bg shadow-lg">
         <main class="mx-auto">
           <div class="d-flex flex-wrap flex-column align-content-center justify-content-center w-75 p-2 mx-auto">
-            <div class="copy-right-section text-white-50 text-uppercase fw-medium">2023 all the rights reserved</div>
-            <div class="developer-credit text-info fw-medium text-capitalize fs-6">developed by md rakib hasan</div>
+            <div id="copy" class="copy-right-section text-white-50 text-uppercase fw-medium"></div>
+            <div id="dev-name" class="developer-credit text-info fw-medium text-capitalize fs-6"></div>
           </div>
         </main>
       </div>
@@ -91,3 +91,5 @@ setHiddenNumber(minimumValue, maximumValue);
 guessInputHandler(minimumValue, maximumValue);
 // number matching challenge 
 numberChallenge(minimumValue, maximumValue);
+document.getElementById('copy').innerHTML=`&copy; ${new Date().getFullYear() } All The Rights Reserved.`;
+document.getElementById('dev-name').innerHTML = `Developed By Md Rakibul Hasan`;
