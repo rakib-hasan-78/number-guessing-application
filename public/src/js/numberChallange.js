@@ -1,3 +1,4 @@
+// import { resetInput } from "./handlers";
 import { setNumberValidator } from "./regex";
 
 export const numberChallenge = (minimumValue, maximumValue) => {
@@ -49,9 +50,15 @@ export const numberChallenge = (minimumValue, maximumValue) => {
                     setTimeout(() => {
                         document.getElementById('number-input').classList.remove('d-none');
                         document.getElementById('number-guess-input').classList.add('d-none');
+                        confirmMsgColor.innerHTML = `<small id="guess-validityMsg"> </small>`
+                        guessInfo.textContent = ``;
+                        input.value = ''
+                        input.classList.remove('is-valid', 'is-invalid')
+                        document.getElementById('number-guess-cancel').classList.add('d-none');
                         localStorage.removeItem('section-pattern');
+
                     }, 2000);
-                    
+
                 } else {
                     // Decrement chances and display remaining chances
                     chances -= 1;
@@ -67,6 +74,22 @@ export const numberChallenge = (minimumValue, maximumValue) => {
                         btn.classList.add('cursor-wait', 'bg-white', 'text-info', 'fw-bolder');
                         btn.classList.remove('cursor-pointer', 'gradient-bg-button');
                         btn.innerHTML = `<i class="bi bi-dash-circle-dotted"></i> DISABLED!!`;
+
+                        setTimeout(() => {
+                            btn.disabled = false;
+                            btn.classList.remove('cursor-wait', 'bg-white', 'text-info', 'fw-bolder');
+                            btn.classList.add('cursor-pointer', 'gradient-bg-button');
+                            btn.innerHTML = 'check number'
+                            input.disabled = false;
+                            input.value = ''
+                            input.classList.remove('is-valid', 'is-invalid')
+                            guessInfo.textContent=''
+                            confirmMsgColor.textContent=''
+                            document.getElementById('number-input').classList.remove('d-none');
+                            document.getElementById('number-guess-input').classList.add('d-none');
+                            localStorage.removeItem('section-pattern');
+                        }, 3000);
+    
                     }
                 }
             }

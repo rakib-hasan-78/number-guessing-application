@@ -1,5 +1,6 @@
 export const focusEventHandlers = (inputName, inputInfo , minimumValue, maximumValue) => {
 
+
     inputName.addEventListener('focus', (e)=>{
         if (!inputName.value) {
           inputInfo.innerText = `set a number between ${minimumValue} to ${maximumValue}`;
@@ -62,4 +63,18 @@ export const xMarkClickEvent = (cancelIcon, input, msg) => {
     msg.textContent=``;
 
     });
+}
+
+// resting guessInput
+export const resetInput = () => {
+
+  document.getElementById('number-input').classList.remove('d-none');
+  document.getElementById('number-guess-input').classList.add('d-none');
+  confirmMsgColor.innerHTML = `<small id="guess-validityMsg"> </small>`
+  guessInfo.textContent = ``;
+  input.value = ''
+  input.classList.remove('is-valid', 'is-invalid')
+  document.getElementById('number-guess-cancel').classList.add('d-none');
+  localStorage.removeItem('section-pattern');
+
 }

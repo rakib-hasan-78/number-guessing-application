@@ -5,6 +5,7 @@ export const setHiddenNumber = (minimumValue, maximumValue) => {
   const inputField = document.getElementById('input-field-value');
   const errMsg = document.querySelector('.error-msg');
   const cancelIcon = document.querySelector('#icon-cancel');
+  const inputInfo = document.getElementById('input-info');
 
   // Check if the section pattern has already been changed on page load
   const sectionChanged = localStorage.getItem('section-pattern');
@@ -75,6 +76,7 @@ export const setHiddenNumber = (minimumValue, maximumValue) => {
       inputField.classList.remove('is-valid', 'is-invalid');
       cancelIcon.classList.remove('d-inline-flex');
       cancelIcon.classList.add('d-none');
+      inputInfo.textContent=``
       form.reset();
     }
   });
