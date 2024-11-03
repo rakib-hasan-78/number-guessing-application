@@ -88,6 +88,7 @@ export const numberChallenge = (minimumValue, maximumValue) => {
                             document.getElementById('number-input').classList.remove('d-none');
                             document.getElementById('number-guess-input').classList.add('d-none');
                             localStorage.removeItem('section-pattern');
+                            chances = 3;
                         }, 3000);
     
                     }

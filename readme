@@ -1,0 +1,32 @@
+# Number Guessing Game
+
+## Overview
+
+The Number Guessing Game is a web-based application that allows users to guess a hidden number within a specified range. The game provides feedback on the validity of the user's input and tracks the number of attempts remaining. The project is built using vanilla JavaScript and incorporates modern web development practices.
+
+## Features
+
+- Input validation for number guessing
+- Dynamic UI updates
+- Error handling with custom error messages
+- Local storage and session storage management
+- Responsive design with Bootstrap and Tailwind CSS
+
+## Technologies Used
+
+- JavaScript
+- HTML
+- CSS
+- Bootstrap
+- Tailwind CSS
+
+## Installation
+
+To set up the project locally, follow these steps:
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/your-username/number-guessing-game.git
+2. Navigate to the project directory:    
+   cd number-guessing-game
+3. Open the ```index.html file in your browser
